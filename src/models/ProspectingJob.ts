@@ -53,6 +53,10 @@ export interface IProspectingJob extends mongoose.Document {
   };
   startedAt?: Date;
   completedAt?: Date;
+  /** When true, leadWriter drops any lead that lacks at least one
+   *  mailbox-verified email after the post-write verification pass.
+   *  Set at job dispatch from the query composer toggle. Defaults false. */
+  verifiedEmailsOnly?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -97,6 +101,7 @@ const prospectingJobSchema = new Schema<IProspectingJob>(
     bullmqJobId: { type: String },
     sourceWorkflowId: { type: Schema.Types.ObjectId, ref: 'Workflow' },
     creditsCharged: { type: Number, default: 0 },
+    verifiedEmailsOnly: { type: Boolean, default: false },
     costSummary: { type: Schema.Types.Mixed },
     subagentStats: {
       dispatched: { type: Number, default: 0 },

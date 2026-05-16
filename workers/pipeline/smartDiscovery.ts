@@ -330,18 +330,15 @@ async function buildLeadRecord(
     };
   }
 
-  // Generic email fallback
-  if (emails.length === 0) {
-    const generic = await verifyEmail(`info@${company.domain}`);
-    if (generic.verdict === 'likely_valid' || generic.verdict === 'risky') {
-      emails.push({
-        address: `info@${company.domain}`,
-        type: 'generic',
-        confidence: generic.verdict === 'likely_valid' ? 0.65 : 0.35,
-        source: 'generic_verified',
-      });
-    }
-  }
+  // Generic email fallback intentionally REMOVED.
+  //
+  // We used to fall back to `info@${domain}` when no other email was found
+  // for a company. That produced a stream of role-based addresses that
+  // looked legit but had near-zero reply rate and (worse) torched the
+  // agency's sending reputation. Product decision: never surface generic
+  // mailboxes as if they were viable contacts. If we couldn't find a real
+  // person's email, the lead carries no email — let the user act on
+  // phone or domain instead.
 
   return {
     workspaceId,

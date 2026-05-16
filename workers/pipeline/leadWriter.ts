@@ -308,6 +308,42 @@ export async function writeLeads(
     });
   }
 
+  // ── verifiedEmailsOnly enforcement ─────────────────────────────────
+  // If the user dispatched this job with "verified emails only" selected,
+  // any lead that didn't end up with at least one verified email is
+  // dropped here. This runs AFTER the verification pass above, so
+  // `verified: true` flags are up-to-date. It runs BEFORE the no-contact
+  // prune so the prune's count metric reflects post-strictness reality.
+  //
+  // Note: a lead with phones but no verified email STILL gets dropped in
+  // strict mode. The agency turned this on precisely because email
+  // verification is the trust signal they care about — degrading to a
+  // phone-only lead defeats the toggle's purpose.
+  const jobStrictMode = await ProspectingJob.findById(jobId, {
+    verifiedEmailsOnly: 1,
+  }).lean() as { verifiedEmailsOnly?: boolean } | null;
+
+  if (jobStrictMode?.verifiedEmailsOnly === true) {
+    const unverifiedLeads = await Lead.find(
+      {
+        jobId: new mongoose.Types.ObjectId(jobId),
+        isDuplicate: { $ne: true },
+        // No element in emails[] has verified:true.
+        emails: { $not: { $elemMatch: { verified: true } } },
+      },
+      { _id: 1, companyName: 1 }
+    ).lean() as Array<{ _id: unknown; companyName?: string }>;
+
+    if (unverifiedLeads.length > 0) {
+      await Lead.deleteMany({ _id: { $in: unverifiedLeads.map(l => l._id) } });
+      logger.info('writeLeads: dropped leads without verified email (verifiedEmailsOnly mode)', {
+        jobId,
+        count: unverifiedLeads.length,
+        companies: unverifiedLeads.map(l => l.companyName).filter(Boolean),
+      });
+    }
+  }
+
   // Prune leads with no reachable contact. A lead is junk when BOTH:
   //   - no email of type !== 'pattern_inferred' (a guessed address is not a contact)
   //   - no phones

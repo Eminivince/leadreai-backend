@@ -170,6 +170,29 @@ export const writeLeadTool: ToolDef = {
     } else if (rescuedEmail && typeof rescuedEmail === 'object' && typeof rescuedEmail.value === 'string' && rescuedEmail.value.includes('@')) {
       rawEmailArgs.push({ address: rescuedEmail.value, type: 'business', confidence: 0.7, source: 'agent_extracted' });
     }
+    // Role-based / generic mailbox prefixes — never useful for outreach.
+    // info@, contact@, sales@, etc. are monitored by triage assistants
+    // (if anyone), and have terrible reply rates. They also blow up the
+    // agency's domain reputation faster than personal-mailbox sends.
+    // Keep in sync with workers/pipeline/emailDetector.ts GENERIC_PREFIXES.
+    const GENERIC_PREFIXES = new Set([
+      'info', 'contact', 'hello', 'admin', 'support', 'enquiries', 'enquiry',
+      'sales', 'office', 'mail', 'team', 'help', 'service', 'services',
+      'inquiry', 'inquiries', 'ask', 'hi', 'general',
+    ]);
+    // Mailer-daemon / no-reply / role-functional prefixes — same idea but
+    // these are NEVER monitored by a human. Dropping them is uncontroversial.
+    const NOISE_PREFIXES = new Set([
+      'noreply', 'no-reply', 'donotreply', 'do-not-reply',
+      'bounce', 'bounces', 'mailer-daemon', 'maildaemon',
+      'newsletter', 'newsletters', 'unsubscribe',
+      'privacy', 'legal', 'compliance', 'dpo',
+      'billing', 'invoice', 'invoices', 'accounts', 'accounting',
+      'hr', 'careers', 'jobs', 'recruitment', 'hiring',
+      'marketing', 'notifications', 'notify', 'alerts',
+      'webmaster', 'postmaster', 'abuse', 'spam',
+      'security', 'cert', 'soc',
+    ]);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const emails = rawEmailArgs.map((e: any) => ({
       address: String(e.address ?? '').toLowerCase().trim(),
@@ -179,7 +202,21 @@ export const writeLeadTool: ToolDef = {
       name: e.name ? String(e.name) : undefined,
       title: e.title ? String(e.title) : undefined,
       department: e.department ? String(e.department) : undefined,
-    })).filter((e: { address: string }) => e.address.includes('@'));
+    })).filter((e: { address: string }) => {
+      if (!e.address.includes('@')) return false;
+      const prefix = e.address.split('@')[0] ?? '';
+      // Drop generic role-based + noise mailboxes outright. The lead can
+      // still survive on its phone, but we will not ship `info@…` to the
+      // user as if it were a viable contact.
+      if (GENERIC_PREFIXES.has(prefix)) return false;
+      if (NOISE_PREFIXES.has(prefix)) return false;
+      // Tolerate `info-uk`, `sales-emea`, etc. by also exact-matching the
+      // canonical part before a dash/dot; agencies don't want those either.
+      const canonical = prefix.split(/[-.]/)[0] ?? '';
+      if (canonical && GENERIC_PREFIXES.has(canonical)) return false;
+      if (canonical && NOISE_PREFIXES.has(canonical)) return false;
+      return true;
+    });
 
     // Normalize phones through libphonenumber-js so downstream consumers get E.164 +
     // type classification (office/mobile/fax). Country hint comes from parsed intent

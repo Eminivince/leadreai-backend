@@ -12,9 +12,10 @@ import { env } from '../config/env.js';
 
 export async function createJob(req: Request, res: Response): Promise<void> {
   const { workspaceId } = req.params;
-  const { rawQuery, clarifications } = req.body as {
+  const { rawQuery, clarifications, verifiedEmailsOnly } = req.body as {
     rawQuery: string;
     clarifications?: ClarificationAnswer[];
+    verifiedEmailsOnly?: boolean;
   };
 
   if (!rawQuery || typeof rawQuery !== 'string' || !rawQuery.trim()) {
@@ -54,6 +55,7 @@ export async function createJob(req: Request, res: Response): Promise<void> {
     parsedIntent,
     status: 'queued',
     creditsCharged: env.CREDITS_PER_JOB,
+    verifiedEmailsOnly: !!verifiedEmailsOnly,
   });
 
   let bullmqJob;
