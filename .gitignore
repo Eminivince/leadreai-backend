@@ -5,7 +5,6 @@ dist
 .env.local
 .env.*
 *.env
-pnpm-lock.yaml
 *.log
 .turbo
 
