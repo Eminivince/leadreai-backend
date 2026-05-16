@@ -1,0 +1,27 @@
+{
+  "country": "NG",
+  "industry": "legal",
+  "description": "Curated list of Nigerian law firms. Top-tier commercial/corporate firms (the 'Big 5/6' of Nigerian legal practice) plus notable mid-tier firms verified from prior harness runs and industry rankings (Chambers Global, Legal 500, IFLR1000).",
+  "companies": [
+    { "name": "Aluko & Oyebode",        "domain": "aluko-oyebode.com",    "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "Banwo & Ighodalo",       "domain": "banwo-ighodalo.com",   "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "Templars",               "domain": "templars-law.com",     "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "Olaniwun Ajayi LP",      "domain": "olaniwunajayi.net",    "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "Aelex",                  "domain": "aelex.com",            "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "Olajide Oyewole LLP",    "domain": "dlapiperafrica.com",   "tags": ["top-tier", "affiliate", "dla-piper-africa"] },
+    { "name": "Udo Udoma & Belo-Osagie","domain": "uubo.org",             "tags": ["top-tier", "full-service", "corporate"] },
+    { "name": "G. Elias & Co",          "domain": "gelias.com",           "tags": ["top-tier", "corporate", "finance"] },
+    { "name": "Wigwe & Partners",       "domain": "wigwepartners.com",    "tags": ["mid-tier", "corporate"] },
+    { "name": "Giwa-Osagie & Co",       "domain": "giwa-osagie.com",      "tags": ["mid-tier", "corporate"] },
+    { "name": "Solola & Akpana",        "domain": "sololaakpana.ng",      "tags": ["mid-tier", "corporate"] },
+    { "name": "Alliance Law Firm",      "domain": "alliancelawfirm.ng",   "tags": ["mid-tier", "corporate"] },
+    { "name": "Bloomfield Law Practice","domain": "bloomfield-law.com",   "tags": ["mid-tier", "corporate"] },
+    { "name": "Duale, Ovia & Alex-Adedipe", "domain": "doa-law.com",      "tags": ["mid-tier", "corporate"] },
+    { "name": "Streamsowers & Köhn",    "domain": "sskohn.com",           "tags": ["mid-tier", "corporate"] },
+    { "name": "Pavestones Legal",       "domain": "pavestoneslegal.com",  "tags": ["mid-tier", "startup-focused"] },
+    { "name": "Greychapel Legal",       "domain": "greychapellegal.com",  "tags": ["mid-tier"] },
+    { "name": "SPA Ajibade & Co",       "domain": "spaajibade.com",       "tags": ["mid-tier", "corporate"] },
+    { "name": "Kenna Partners",         "domain": "kennapartners.com",    "tags": ["mid-tier", "corporate"] },
+    { "name": "Punuka Attorneys & Solicitors", "domain": "punuka.com",    "tags": ["mid-tier", "corporate", "ip"] }
+  ]
+}

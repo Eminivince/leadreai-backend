@@ -1,0 +1,17 @@
+node_modules
+dist
+.next
+.env
+.env.local
+.env.*
+*.env
+pnpm-lock.yaml
+*.log
+.turbo
+
+# Build / cache
+*.tsbuildinfo
+
+# Test artifacts
+test-results
+playwright-report

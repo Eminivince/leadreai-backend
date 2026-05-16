@@ -1,0 +1,30 @@
+{
+  "country": "NG",
+  "industry": "fintech",
+  "description": "Curated list of Nigerian fintech companies verified from prior harness runs, press coverage, and industry directories. Mix of blue-chip (tagged 'established') and growth-stage (tagged 'mid-tier' or 'startup').",
+  "companies": [
+    { "name": "Paystack",     "domain": "paystack.com",     "tags": ["established", "payments", "b2b"] },
+    { "name": "Flutterwave",  "domain": "flutterwave.com",  "tags": ["established", "payments", "b2b"] },
+    { "name": "Interswitch",  "domain": "interswitchgroup.com", "tags": ["established", "payments", "b2b"] },
+    { "name": "Moniepoint",   "domain": "moniepoint.com",   "tags": ["established", "payments", "b2b", "b2c"] },
+    { "name": "OPay",         "domain": "opayweb.com",      "tags": ["established", "payments", "b2c"] },
+    { "name": "Paga",         "domain": "mypaga.com",       "tags": ["established", "payments"] },
+    { "name": "Cowrywise",    "domain": "cowrywise.com",    "tags": ["mid-tier", "wealth", "b2c"] },
+    { "name": "FairMoney",    "domain": "fairmoney.io",     "tags": ["mid-tier", "lending", "b2c"] },
+    { "name": "Carbon",       "domain": "getcarbon.co",     "tags": ["mid-tier", "lending", "b2c"] },
+    { "name": "PiggyVest",    "domain": "piggyvest.com",    "tags": ["mid-tier", "savings", "b2c"] },
+    { "name": "Bamboo",       "domain": "investbamboo.com", "tags": ["mid-tier", "investing", "b2c"] },
+    { "name": "Risevest",     "domain": "rise.capital",     "tags": ["mid-tier", "investing", "b2c"] },
+    { "name": "Chipper Cash", "domain": "chippercash.com",  "tags": ["established", "remittance", "b2c"] },
+    { "name": "Kuda Bank",    "domain": "kuda.com",         "tags": ["established", "digital-bank", "b2c"] },
+    { "name": "V Bank",       "domain": "vbank.ng",         "tags": ["mid-tier", "digital-bank", "b2c"] },
+    { "name": "ALAT by Wema", "domain": "alat.ng",          "tags": ["mid-tier", "digital-bank", "b2c"] },
+    { "name": "TeamApt",      "domain": "teamapt.com",      "tags": ["established", "payments", "b2b"] },
+    { "name": "Fincra",       "domain": "fincra.com",       "tags": ["mid-tier", "payments", "b2b"] },
+    { "name": "Korapay",      "domain": "korapay.com",      "tags": ["mid-tier", "payments", "b2b"] },
+    { "name": "Monnify",      "domain": "monnify.com",      "tags": ["mid-tier", "payments", "b2b"] },
+    { "name": "Sudo Africa",  "domain": "sudo.africa",      "tags": ["startup", "payments", "b2b"] },
+    { "name": "Bitmama",      "domain": "bitmama.io",       "tags": ["startup", "crypto", "b2c"] },
+    { "name": "Yellow Card",  "domain": "yellowcard.io",    "tags": ["mid-tier", "crypto", "b2c"] }
+  ]
+}

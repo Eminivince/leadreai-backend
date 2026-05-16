@@ -1,0 +1,50 @@
+{
+  "promptId": "p5-mid-tier-manufacturers",
+  "jobId": "69e6d08ed7219fa3c987d35e",
+  "totalLeads": 5,
+  "axes": {
+    "coverage": {
+      "score": 100,
+      "notes": [
+        "5/5 effective (spec=100, override active) (100%), strong-min scaled=2 → 250%"
+      ]
+    },
+    "accuracy": {
+      "score": 68,
+      "notes": [
+        "0 possibly-hallucinated domains; 1/5 leads have libphonenumber-valid phones"
+      ]
+    },
+    "usefulness": {
+      "score": 100,
+      "notes": [
+        "5/5 leads contactable (biz email, valid phone, or LinkedIn)"
+      ]
+    },
+    "relevance": {
+      "score": 36,
+      "notes": [
+        "named=2, bizEmail=5"
+      ]
+    },
+    "honesty": {
+      "score": 100,
+      "notes": [
+        "2 explicit-null field(s); 5/5 leads sourced"
+      ]
+    }
+  },
+  "composite": 84,
+  "redFlags": [],
+  "leadBreakdown": {
+    "withBusinessEmail": 5,
+    "withNamedContact": 2,
+    "withLinkedIn": 0,
+    "withSourcedContact": 5,
+    "withValidPhone": 1,
+    "personalEmailsAsBusiness": 0,
+    "duplicatePhoneCount": 0,
+    "hallucinatedDomains": 0,
+    "honestNulls": 2
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "promptId": "p3-icp-payments-infra",
+  "jobId": "69e6c517aea9dab6de1a52f5",
+  "totalLeads": 5,
+  "axes": {
+    "coverage": {
+      "score": 100,
+      "notes": [
+        "5/5 effective (spec=75, override active) (100%), strong-min scaled=3 → 167%"
+      ]
+    },
+    "accuracy": {
+      "score": 92,
+      "notes": [
+        "0 possibly-hallucinated domains; 4/5 leads have libphonenumber-valid phones"
+      ]
+    },
+    "usefulness": {
+      "score": 100,
+      "notes": [
+        "5/5 leads contactable (biz email, valid phone, or LinkedIn)"
+      ]
+    },
+    "relevance": {
+      "score": 53,
+      "notes": [
+        "named=1, bizEmail=5"
+      ]
+    },
+    "honesty": {
+      "score": 100,
+      "notes": [
+        "5 explicit-null field(s); 5/5 leads sourced"
+      ]
+    }
+  },
+  "composite": 80,
+  "redFlags": [],
+  "leadBreakdown": {
+    "withBusinessEmail": 5,
+    "withNamedContact": 1,
+    "withLinkedIn": 0,
+    "withSourcedContact": 5,
+    "withValidPhone": 4,
+    "personalEmailsAsBusiness": 0,
+    "duplicatePhoneCount": 0,
+    "hallucinatedDomains": 0,
+    "honestNulls": 5
+  }
+}

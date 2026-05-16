@@ -1,0 +1,50 @@
+{
+  "promptId": "p1-fintech-decision-makers",
+  "jobId": "69e6bd798e77dc27dd64214a",
+  "totalLeads": 4,
+  "axes": {
+    "coverage": {
+      "score": 90,
+      "notes": [
+        "4/5 effective (spec=50, override active) (80%), strong-min scaled=4 → 100%"
+      ]
+    },
+    "accuracy": {
+      "score": 90,
+      "notes": [
+        "0 possibly-hallucinated domains; 3/4 leads have libphonenumber-valid phones"
+      ]
+    },
+    "usefulness": {
+      "score": 100,
+      "notes": [
+        "4/4 leads contactable (biz email, valid phone, or LinkedIn)"
+      ]
+    },
+    "relevance": {
+      "score": 33,
+      "notes": [
+        "named=0, bizEmail=4"
+      ]
+    },
+    "honesty": {
+      "score": 100,
+      "notes": [
+        "4 explicit-null field(s); 4/4 leads sourced"
+      ]
+    }
+  },
+  "composite": 82,
+  "redFlags": [],
+  "leadBreakdown": {
+    "withBusinessEmail": 4,
+    "withNamedContact": 0,
+    "withLinkedIn": 0,
+    "withSourcedContact": 4,
+    "withValidPhone": 3,
+    "personalEmailsAsBusiness": 0,
+    "duplicatePhoneCount": 0,
+    "hallucinatedDomains": 0,
+    "honestNulls": 4
+  }
+}

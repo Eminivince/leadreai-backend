@@ -1,0 +1,50 @@
+{
+  "promptId": "p4-trigger-legal-compliance-payments",
+  "jobId": "69e6bf628e77dc27dd64218c",
+  "totalLeads": 1,
+  "axes": {
+    "coverage": {
+      "score": 35,
+      "notes": [
+        "1/5 effective (spec=50, override active) (20%), strong-min scaled=2 → 50%"
+      ]
+    },
+    "accuracy": {
+      "score": 60,
+      "notes": [
+        "0 possibly-hallucinated domains; 0/1 leads have libphonenumber-valid phones"
+      ]
+    },
+    "usefulness": {
+      "score": 100,
+      "notes": [
+        "1/1 leads contactable (biz email, valid phone, or LinkedIn)"
+      ]
+    },
+    "relevance": {
+      "score": 26,
+      "notes": [
+        "named=0, bizEmail=1, withSignal=0 (signal pipeline not built)"
+      ]
+    },
+    "honesty": {
+      "score": 100,
+      "notes": [
+        "1 explicit-null field(s); 1/1 leads sourced"
+      ]
+    }
+  },
+  "composite": 63,
+  "redFlags": [],
+  "leadBreakdown": {
+    "withBusinessEmail": 1,
+    "withNamedContact": 0,
+    "withLinkedIn": 0,
+    "withSourcedContact": 1,
+    "withValidPhone": 0,
+    "personalEmailsAsBusiness": 0,
+    "duplicatePhoneCount": 0,
+    "hallucinatedDomains": 0,
+    "honestNulls": 1
+  }
+}

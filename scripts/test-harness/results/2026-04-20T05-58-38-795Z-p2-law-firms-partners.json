@@ -1,0 +1,52 @@
+{
+  "promptId": "p2-law-firms-partners",
+  "jobId": "69e5be08a422368f01c6b1df",
+  "totalLeads": 5,
+  "axes": {
+    "coverage": {
+      "score": 6,
+      "notes": [
+        "5/100 targetCount (5%), strong-min 70 → 7%"
+      ]
+    },
+    "accuracy": {
+      "score": 52,
+      "notes": [
+        "2 possibly-hallucinated domains; 2/5 leads have libphonenumber-valid phones"
+      ]
+    },
+    "usefulness": {
+      "score": 100,
+      "notes": [
+        "5/5 leads contactable (biz email, valid phone, or LinkedIn)"
+      ]
+    },
+    "relevance": {
+      "score": 29,
+      "notes": [
+        "named=0, bizEmail=5"
+      ]
+    },
+    "honesty": {
+      "score": 90,
+      "notes": [
+        "5 explicit-null field(s); 5/5 leads sourced"
+      ]
+    }
+  },
+  "composite": 57,
+  "redFlags": [
+    "2 suspected hallucinated domain(s)"
+  ],
+  "leadBreakdown": {
+    "withBusinessEmail": 5,
+    "withNamedContact": 0,
+    "withLinkedIn": 0,
+    "withSourcedContact": 5,
+    "withValidPhone": 2,
+    "personalEmailsAsBusiness": 0,
+    "duplicatePhoneCount": 0,
+    "hallucinatedDomains": 2,
+    "honestNulls": 5
+  }
+}

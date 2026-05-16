@@ -1,0 +1,33 @@
+{
+  "country": "NG",
+  "industry": "manufacturing",
+  "description": "Curated Nigerian manufacturers. Tagged 'blue-chip' (well-known, publicly listed conglomerates) vs 'mid-tier' (less-covered manufacturers that SERP top-10 queries typically miss). The 'mid-tier' tag specifically supports queries like 'outside the obvious blue-chip names'.",
+  "companies": [
+    { "name": "Dangote Group",              "domain": "dangote.com",              "tags": ["blue-chip", "conglomerate"] },
+    { "name": "Unilever Nigeria",           "domain": "unilevernigeria.com",      "tags": ["blue-chip", "fmcg"] },
+    { "name": "Nestlé Nigeria",             "domain": "nestle-cwa.com",           "tags": ["blue-chip", "food-beverage"] },
+    { "name": "Nigerian Breweries Plc",     "domain": "nbplc.com",                "tags": ["blue-chip", "beverage"] },
+    { "name": "PZ Cussons Nigeria",         "domain": "pzcussons.com",            "tags": ["blue-chip", "fmcg"] },
+    { "name": "Flour Mills of Nigeria",     "domain": "fmnplc.com",               "tags": ["blue-chip", "food"] },
+    { "name": "Cadbury Nigeria",            "domain": "cadburynigeria.com",       "tags": ["blue-chip", "food"] },
+    { "name": "Lafarge Africa",             "domain": "lafarge.com.ng",           "tags": ["blue-chip", "cement"] },
+    { "name": "BUA Cement",                 "domain": "buacement.com",            "tags": ["blue-chip", "cement"] },
+    { "name": "Honeywell Flour Mills",      "domain": "honeywellflour.com",       "tags": ["mid-tier", "food"] },
+    { "name": "Notore Chemical Industries", "domain": "notore.com",               "tags": ["mid-tier", "agri-chemicals"] },
+    { "name": "Indorama Eleme Petrochemicals", "domain": "indoramaeleme.com",     "tags": ["mid-tier", "petrochemical"] },
+    { "name": "Dufil Prima Foods",          "domain": "dufil.com",                "tags": ["mid-tier", "food"] },
+    { "name": "Graceco",                    "domain": "graceco.com.ng",           "tags": ["mid-tier", "food"] },
+    { "name": "Promasidor Nigeria",         "domain": "promasidor-ng.com",        "tags": ["mid-tier", "food"] },
+    { "name": "Tolaram Group",              "domain": "tolaram.com",              "tags": ["mid-tier", "conglomerate"] },
+    { "name": "Olam Nigeria",               "domain": "olamagri.com",             "tags": ["mid-tier", "agribusiness"] },
+    { "name": "Beloxxi Industries",         "domain": "beloxxi.com",              "tags": ["mid-tier", "food"] },
+    { "name": "Dangote Sugar Refinery",     "domain": "dangotesugar.com.ng",      "tags": ["mid-tier", "food"] },
+    { "name": "Nascon Allied Industries",   "domain": "nasconplc.com",            "tags": ["mid-tier", "food"] },
+    { "name": "Vitafoam Nigeria",           "domain": "vitafoamng.com",           "tags": ["mid-tier", "household"] },
+    { "name": "Berger Paints Nigeria",      "domain": "bergerpaintsnig.com",      "tags": ["mid-tier", "paints"] },
+    { "name": "CAP Plc",                    "domain": "capplcng.com",             "tags": ["mid-tier", "paints"] },
+    { "name": "Cutix Plc",                  "domain": "cutixplc.com",             "tags": ["mid-tier", "cables"] },
+    { "name": "Greif Nigeria",              "domain": "greif.com",                "tags": ["mid-tier", "packaging"] },
+    { "name": "Beta Glass",                 "domain": "betaglassplc.com",         "tags": ["mid-tier", "packaging"] }
+  ]
+}
