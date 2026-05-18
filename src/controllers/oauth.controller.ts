@@ -44,11 +44,29 @@ const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo';
 const GOOGLE_SCOPES = ['openid', 'email', 'profile'].join(' ');
 
+/**
+ * Redirect URI sent to Google for the LOGIN flow (sign in with Google).
+ *
+ * We support two independent Google OAuth flows in this codebase: login
+ * (this file) and Gmail-connect (gmail.controller.ts). Both used to read
+ * env.GOOGLE_OAUTH_REDIRECT_URI, which meant whichever URL that env var
+ * was set to "won" — the other flow was silently broken because Google
+ * would redirect to the wrong callback handler with the wrong state
+ * shape.
+ *
+ * The fix: dedicated GOOGLE_OAUTH_LOGIN_REDIRECT_URI for login. Falls
+ * back to GOOGLE_OAUTH_REDIRECT_URI for backward compat (single-flow
+ * deployments). Gmail-connect keeps using GOOGLE_OAUTH_REDIRECT_URI.
+ */
+function loginRedirectUri(): string | undefined {
+  return env.GOOGLE_OAUTH_LOGIN_REDIRECT_URI ?? env.GOOGLE_OAUTH_REDIRECT_URI;
+}
+
 function oauthConfigured(): boolean {
   return !!(
     env.GOOGLE_OAUTH_CLIENT_ID &&
     env.GOOGLE_OAUTH_CLIENT_SECRET &&
-    env.GOOGLE_OAUTH_REDIRECT_URI
+    loginRedirectUri()
   );
 }
 
@@ -81,7 +99,7 @@ export async function startGoogleAuth(req: Request, res: Response): Promise<void
 
   const url = new URL(GOOGLE_AUTHORIZE_URL);
   url.searchParams.set('client_id', env.GOOGLE_OAUTH_CLIENT_ID!);
-  url.searchParams.set('redirect_uri', env.GOOGLE_OAUTH_REDIRECT_URI!);
+  url.searchParams.set('redirect_uri', loginRedirectUri()!);
   url.searchParams.set('response_type', 'code');
   url.searchParams.set('scope', GOOGLE_SCOPES);
   url.searchParams.set('state', statePayload);
@@ -153,7 +171,9 @@ export async function googleCallback(req: Request, res: Response): Promise<void>
       code,
       client_id: env.GOOGLE_OAUTH_CLIENT_ID!,
       client_secret: env.GOOGLE_OAUTH_CLIENT_SECRET!,
-      redirect_uri: env.GOOGLE_OAUTH_REDIRECT_URI!,
+      // Must match the redirect_uri sent in startGoogleAuth — Google
+      // checks for exact equality at token exchange.
+      redirect_uri: loginRedirectUri()!,
       grant_type: 'authorization_code',
     });
     const raw = await fetch(GOOGLE_TOKEN_URL, {

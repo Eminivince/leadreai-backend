@@ -79,6 +79,12 @@ const envSchema = z.object({
   HUBSPOT_REDIRECT_URI: z.string().url().optional(),
   GOOGLE_OAUTH_CLIENT_ID: z.string().optional(),
   GOOGLE_OAUTH_CLIENT_SECRET: z.string().optional(),
+  // Redirect URI used by the "Sign in with Google" flow. Falls back to
+  // GOOGLE_OAUTH_REDIRECT_URI when unset so single-flow deployments keep
+  // working. If you have BOTH Google login AND Gmail-connect enabled,
+  // set this explicitly so each flow goes to its own callback.
+  GOOGLE_OAUTH_LOGIN_REDIRECT_URI: z.string().url().optional(),
+  // Redirect URI used by the Gmail-connect (workspace email sender) flow.
   GOOGLE_OAUTH_REDIRECT_URI: z.string().url().optional(),
   SYSTEM_FROM_EMAIL: z.string().email().default('hello@leadreai.local'),
   SYSTEM_FROM_NAME: z.string().default('LeadreAI'),
